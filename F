@@ -1,0 +1,163 @@
+Да, это отличная идея! Я подготовил для тебя профессиональные **UML Use Case диаграммы** для каждого из 4-х случаев. В них отражены акторы, основные сценарии и выведены альтернативные потоки (через зависимости <<include>> и <<extend>>).
+### Как вставить эти диаграммы в draw.io:
+ 1. Скопируй нужный блок XML-кода.
+ 2. Перейди в пустой проект **draw.io**.
+ 3. В верхнем меню выбери: **+ (Insert / Вставить)** -> **Advanced (Расширенные)** -> **From Text (Из текста) / XML**.
+ 4. Вставь код в появившееся окно и нажми **Import** (или просто нажми Ctrl+V прямо на пустом холсте — draw.io автоматически распознает XML).
+### 1. Бронирование сеанса массажа онлайн
+На этой диаграмме Клиент и Система бронирования взаимодействуют с главным прецедентом. Выбор времени вынесен как обязательное действие (<<include>>), а предложение других слотов (если занято) — как расширение (<<extend>>).
+```xml
+<mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="actor1" value="Клиент" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="100" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor2" value="Система&lt;br&gt;бронирования" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="600" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc1" value="Бронирование сеанса" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="195" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc2" value="Выбор параметров&lt;br&gt;(услуга, мастер, время)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="60" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc3" value="Предложение&lt;br&gt;других слотов" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="340" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="link1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc1" target="uc2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link4" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc3" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
+
+```
+### 2. Оплата услуг на месте или онлайн
+Здесь показан основной процесс оплаты, расширяющийся онлайн-вводом карты и веткой неуспешной оплаты.
+```xml
+<mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="actor1" value="Клиент" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="100" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor2" value="Система оплаты" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="600" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc1" value="Оплата услуг" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="195" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc2" value="Ввод данных карты&lt;br&gt;(при онлайн-оплате)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="60" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc3" value="Отказ в оплате /&lt;br&gt;Предложение другого способа" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="340" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="link1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link3" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link4" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc3" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
+
+```
+### 3. Управление расписанием специалистов
+Администратор и система работают с расписанием. Добавлен альтернативный сценарий: если ставится отпуск, система сама перекрывает (блокирует) слоты.
+```xml
+<mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="actor1" value="Администратор" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="100" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor2" value="Система&lt;br&gt;управления" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="600" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc1" value="Редактирование&lt;br&gt;расписания" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="195" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc2" value="Авто-блокировка слотов&lt;br&gt;(отпуск/больничный)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="340" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="link1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link4" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
+
+```
+### 4. Уведомления о предстоящих сеансах
+Здесь участвуют сразу три актора: Система инициирует уведомление, Клиент получает его, а Администратор отслеживает статус ответа.
+```xml
+<mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="actor1" value="Система&lt;br&gt;уведомлений" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="100" y="200" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor2" value="Клиент" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="600" y="100" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor3" value="Администратор" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="600" y="300" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc1" value="Отправка&lt;br&gt;напоминания" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="95" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc2" value="Повторное уведомление&lt;br&gt;(при игнорировании)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="-20" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="uc3" value="Обновление статуса&lt;br&gt;(подтверждение/отмена)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="295" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="link1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link3" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor2" target="uc3">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link4" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor3" target="uc3">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link5" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc3">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="link6" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc2" target="uc1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
+
+```
+Если ты захочешь объединить их все в одну большую диаграмму прецедентов (как это часто делают для архитектурных документов), скажи мне — я сгенерирую единый файл, где будут все акторы и все Use Cases внутри общего прямоугольника системы!
+
